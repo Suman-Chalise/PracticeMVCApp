@@ -1,0 +1,63 @@
+﻿@model IEnumerable<Movies>
+
+@* 	<partial name="_Noti" /> *@
+
+@* <div class="float-end m-2">
+	<a asp-controller="Movies" asp-action="Add" class="btn btn-primary">Add a Movie</a>
+</div> *@
+
+	<div class="row pt-4 pb-3">
+
+		<div class="col-6">
+          <h2 class="text-primary">Movie List</h2>
+		</div>
+
+		<div class="col-6 text-end">
+			<a asp-controller="Movies" asp-action="Add" class="btn btn-primary"> <i class="bi bi-plus-circle"></i> Add a Movie</a>
+		</div>
+
+	</div>
+
+
+
+
+<table class="table table-bordered table-striped">
+	<thead>
+		<tr>
+			<th>Movie Id</th>
+			<th>Name</th>
+			<th>Genre</th>
+			<th>Duration</th>
+
+			<th>Actions</th>
+
+		</tr>
+	
+	</thead>
+	<tbody>
+@* 		@foreach (var item in Model) *@
+
+		@foreach (var item in Model.OrderBy(u => u.duration))  @* this will allow to display in order  *@
+		{
+			<tr>
+				<td>@item.MovieId</td>
+				<td>@item.Name</td>
+				<td>@item.Genre</td>
+				<td>@item.duration</td>
+
+				<td>
+					<form method="post">
+						<a asp-controller="Movies" asp-action="Edit" asp-route-id="@item.MovieId" class="btn btn-outline-info">Edit</a>
+						<a asp-controller="Movies" asp-action="Delete" asp-route-id="@item.MovieId" class="btn btn-outline-danger ">Delete</a>
+						<button type="submit" asp-controller="Movies" asp-action="DeletePostOneClick" asp-route-id="@item.MovieId" class="btn btn-outline-danger">One Click Delete</button>
+					</form>
+					
+				</td>
+
+
+			</tr>
+
+		}
+	
+	</tbody>
+</table>

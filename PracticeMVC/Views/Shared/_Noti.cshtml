@@ -1,0 +1,29 @@
+﻿@{
+
+	if (TempData["Added"] != null)
+	{
+		<div class="alert alert-success">
+			<strong> @TempData["Added"]</strong>
+		</div>
+	}
+
+	if (TempData["Edited"] != null)
+	{
+		<div class="alert alert-warning">
+			<strong> @TempData["Edited"]</strong>
+		</div>
+	}
+
+	if (TempData["Deleted"] != null)
+	{
+		<div class="alert alert-danger">
+			<strong> @TempData["Deleted"]</strong>
+		</div>
+	
+	}
+
+	
+}
+
+
+

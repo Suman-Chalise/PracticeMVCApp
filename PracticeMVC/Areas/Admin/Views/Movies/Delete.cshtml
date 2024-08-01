@@ -1,0 +1,35 @@
+﻿@model Movies
+
+
+<form method="post" asp-action="DeletePost">
+
+    <input type="hidden" asp-for="MovieId" />   @* with the help of this my code will remove the correct Id  *@
+
+    <div class="mb-3">
+        <label class="form-label">Movie Name</label>
+        <input asp-for="Name" disabled class="form-control">
+        <span asp-validation-for="Name" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Movie Genre</label>
+        <input asp-for="Genre" disabled class="form-control">
+        <span asp-validation-for="Genre" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Duration</label>
+        <input asp-for="duration" disabled class="form-control">
+        <span asp-validation-for="duration" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-danger">Delete</button>
+    <a asp-controller="Movies" asp-action="Index" class="btn btn-outline-secondary">Back To Index</a>
+
+</form>
+
+@section Scripts {
+    @{
+        <partial name="_ValidationScriptsPartial" />
+    }
+}
